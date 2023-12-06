@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 let bodyParser = require("body-parser");
 const morgan = require("morgan");
 const dotenv = require("dotenv");
-const authorRoute = require("./route/author");
+const authorRoute = require("./routes/author");
 
 dotenv.config();
 //connect database
@@ -23,7 +23,7 @@ app.use(cors());
 app.use(morgan("common"));
 
 //Routes
-app.use("v1/author", authorRoute);
+app.use("/v1/author", authorRoute);
 
 app.listen(8000, () => {
   console.log("Server is running...");
