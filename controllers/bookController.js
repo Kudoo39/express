@@ -47,7 +47,12 @@ const bookController = {
   //delete a book
   deleteABook: async (req, res) => {
     try {
-      await Book.findByIdAndDelete(req.params.id);
+      await Author.updateMany(
+        { books: req.params.id },
+        { $pull: { books: req.params.id } }
+      ); //delete the book in Author HERE
+      await Book.findByIdAndDelete(req.params.id); //here just delete a book in database, but the book in Author's book array is NOT
+      res.status(200).json("Deleted successfully");
     } catch (error) {
       res.status(500).json(error);
     }

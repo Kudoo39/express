@@ -15,6 +15,6 @@ router.get("/:id", bookController.getABook);
 router.put("/:id", bookController.updateABook);
 
 //delete a book
-router.delete(":/id", bookController.deleteABook);
+router.delete("/:id", bookController.deleteABook);
 
 module.exports = router;
