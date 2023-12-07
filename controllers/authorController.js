@@ -39,6 +39,16 @@ const authorController = {
       res.status(500).json(error);
     }
   },
+  //delete an author
+  deleteAnAuthor: async (req, res) => {
+    try {
+      await Book.updateMany({ author: req.params.id }, { author: null });
+      await Author.findByIdAndDelete(req.params.id);
+      res.status(200).json("Deleted successfully!!");
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 };
 
 module.exports = authorController;
