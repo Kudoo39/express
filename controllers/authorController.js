@@ -11,6 +11,15 @@ const authorController = {
       res.status(500).json(error);
     }
   },
+  //get all authors
+  getAllAuthor: async (req, res) => {
+    try {
+      const authors = await Author.find();
+      res.status(200).json(authors);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+  },
 };
 
 module.exports = authorController;
